@@ -1,0 +1,44 @@
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3307/spring
+    username: root
+    password: root
+
+  thymeleaf:
+    prefix: classpath:static/   #타임리프 루트경로
+    suffix: .html     #확장자 생략
+    check-template-location: true   #??
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql: true
+    defer-datasource-initialization: true
+
+  logging.level:
+    org.hibernate.SQL: debug
+    org.hibernate.type: trace
+
+  mail:
+    host: smtp.gmail.com # 1
+    port: 587 # 2
+    username: ${mail.username} # 3
+    password: ${mail.password} # 4
+    properties:
+      mail:
+        smtp:
+          auth: true # 5
+          timeout: 5000 # 6
+          starttls:
+            enable: true # 7
+
+#  sql:
+#    init:
+#      mode: always
+
+server:
+  port: 8083
+
